@@ -55,7 +55,6 @@ class LokationPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestP
 
     private fun startPositionUpdates(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
         Log.d(TAG, "startPositionUpdates")
-
         val enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         if (enabled) {
             requestLocationUpdates()
@@ -85,7 +84,6 @@ class LokationPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestP
         serviceStreamHandler = ServiceStreamHandler()
         serviceEventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "lokation_service_event_channel")
         serviceEventChannel.setStreamHandler(serviceStreamHandler)
-
 
         if (checkPermission()) {
             setupStatusListener();
